@@ -1,5 +1,5 @@
 ;
-; AutoHotkey Version: 1.x
+; SendSelecion2DreamPie Version: 1.0
 ; Language:       English
 ; Platform:       Win9x/NT
 ; Author:         https://github.com/i-namekawa
@@ -18,17 +18,19 @@ ActivateDreampie()
 {
     IfWinExist DreamPie ahk_class gdkWindowToplevel
     {
-    WinActivate 
+    WinActivate, DreamPie
+    WinWaitActive, DreamPie
     }
 }
 
 F9::
 WinGetActiveTitle, editor
 old_clipboard = %clipboard%
+
 Send, ^c
 ActivateDreampie()
 send, {tab}
-WinActivate gdkWindowChild2
+; WinActivate gdkWindowChild2
 Send, ^a
 Send, {Del}
 Send, ^v
